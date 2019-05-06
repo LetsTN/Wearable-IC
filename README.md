@@ -7,5 +7,5 @@ Qualquer dúvida poderá ser tirada com os responsáveis por cada parte.<br>
 ><a href="https://drive.google.com/open?id=1UnxZSvZo_0a5qNejlp756W3kZUeZ-29r">Protótipos</a>
 
 #### Responsáveis pelo Protótipo 1:
-><a href="https://github.com/matheuskuster">Matheus Kuster</a>
-><a href="https://github.com/Bileska">Letícia Teixeira</a>
+><a href="https://github.com/matheuskuster">Matheus Kuster</a><br>
+><a href="https://github.com/Bileska">Letícia Teixeira</a><br>
