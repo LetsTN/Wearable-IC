@@ -52,10 +52,10 @@ class DelegaAutenticacao(DefaultDelegate):
 		elif hnd == 0x38:
 			# Parece que não foi testado, mas n vou tirar isso daq n
 			if len(data) == 20 and struct.unpack('b', data[0])[0] == 1:
-				self.device.queue.put((QUEUE_TYPES.RAW_ACCEL, data))
+				self.device.queue.put((TIPO_FILA.ACEL_BRUTA, data))
 
 			elif len(data) == 16:
-				self.device.queue.put((QUEUE_TYPES.RAW_HEART, data))
+				self.device.queue.put((TIPO_FILA.BAT_BRUTO, data))
 
 		else:
 			self.device._log.error("Unhandled Response " + hex(hnd) + ": " + str(data.encode("hex")) + " len:" + str(len(data)))
@@ -63,4 +63,10 @@ class DelegaAutenticacao(DefaultDelegate):
 
 class MiBand3(Peripheral):
 
-	
+	_KEY = b'\x01\x23\x45\x67\x89\x01\x22\x23\x34\x45\x56\x67\x78\x89\x90\x02'
+	_send_key_cmd = struct.pack('<18s', b'\x01\x08' + _KEY)
+	_send_rnd_cmd = struct.pack('<2s', b'\x02\x08')
+	_send_enc_key = struct.pack('<2s', b'\x03\x08')
+
+	def __init__(self, end_mac, timeout = 0.5, debug = False):
+		

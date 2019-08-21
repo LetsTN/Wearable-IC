@@ -2,7 +2,7 @@
 __all__ = ['UUIDS']
 
 class Imutavel(type):
-	""" Classe que definte o tipo imutável para um objeto """
+	""" Classe que define o tipo imutável para um objeto """
 
 	def __call__(*args):
 		raise Exception('Você não pode instanciar um objeto imutável')
@@ -87,4 +87,4 @@ class TIPO_FILA(object):
 
 	BATIMENTOS = 'batimetnos'
 	ACEL_BRUTA = 'acel_bruta' # Aceleração bruta
-	BAT_MRUTO = 'bat_bruto' # Batimento bruto
+	BAT_BRUTO = 'bat_bruto' # Batimento bruto
