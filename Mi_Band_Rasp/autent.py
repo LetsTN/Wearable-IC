@@ -1,5 +1,14 @@
 
-from bluepy.btle import DefaultDelegate
+import struct
+import time
+import logging
+import crc16
+import os
+
+from bluepy.btle import DefaultDelegate, Peripheral, ADDR_TYPE_RANDOM, BTLEException
+from datetime import datetime
+from Crypto.Cipher import AES
+from Queue import Queue, Empty
 
 from constantes import UUIDS, ESTADO_AUTENTICACAO, TIPOS_ALERTA, TIPO_FILA
 
@@ -52,3 +61,6 @@ class DelegaAutenticacao(DefaultDelegate):
 			self.device._log.error("Unhandled Response " + hex(hnd) + ": " + str(data.encode("hex")) + " len:" + str(len(data)))
 
 
+class MiBand3(Peripheral):
+
+	
