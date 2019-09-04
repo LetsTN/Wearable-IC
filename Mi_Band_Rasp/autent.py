@@ -331,14 +331,14 @@ class MiBand3(Peripheral):
 		segundo = horario.second 
 
 		fraction = ano / 256
-        rem = year % 256
+		rem = year % 256
 
-        write_val =  format(rem, '#04x') + format(fraction, '#04x') + format(mes, '#04x') + format(dia, '#04x') + format(hora, '#04x') + format(minuto, '#04x') + format(segubdo, '#04x') + format(5, '#04x') + format(0, '#04x') + format(0, '#04x') +'0x16'
-        write_val = write_val.replace('0x', '\\x')
-        print(write_val)
+		write_val =  format(rem, '#04x') + format(fraction, '#04x') + format(mes, '#04x') + format(dia, '#04x') + format(hora, '#04x') + format(minuto, '#04x') + format(segubdo, '#04x') + format(5, '#04x') + format(0, '#04x') + format(0, '#04x') +'0x16'
+		write_val = write_val.replace('0x', '\\x')
+		print(write_val)
 
-        char.write('\xe2\x07\x01\x1e\x00\x00\x00\x00\x00\x00\x16', withResponse=True)
-        a = input('Data modificada, aperte enter para continuar')
+		char.write('\xe2\x07\x01\x1e\x00\x00\x00\x00\x00\x00\x16', withResponse=True)
+		a = input('Data modificada, aperte enter para continuar')
 		return True
 
 	def dfuUpdate(self, fileName):
@@ -372,11 +372,11 @@ class MiBand3(Peripheral):
 		char.write("\x03", withResponse=True)
 		char1 = svc.getCharacteristics(UUIDS.CARACTERISTICA_AFD_FIRMWARE_ESCREVER)[0]
 		with open(fileName) as f:
-		  while True:
-			c = f.read(20) #takes 20 bytes :D
-			if not c:
-			  print("Update Over")
-			  break
+			while True:
+				c = f.read(20) #takes 20 bytes :D
+				if not c:
+					print("Update Over")
+					break
 			print('Writing Resource', c.encode('hex'))
 			char1.write(c)
 		# after update is done send these values
